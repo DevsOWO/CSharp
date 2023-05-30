@@ -4,7 +4,7 @@ Adding OWO’s SDK to a game is very simple:
 1. Establish the communication: Game - OWO App.
 2. Choose a sensation or create it.
 3. Send it to one or more muscles.
-4. #Feelthegame. 
+4. #Feelthegame.  
 
 # Connection
 There are two ways to establish a connection with OWO: 
@@ -14,9 +14,21 @@ There are two ways to establish a connection with OWO:
 //The ip is provided to the user by the owo app.
 OWO.Connect(ip);
 ```
+It is also possible to manually connect to multiple ips:
+```
+OWO.Connect(ip1, ip2, ip3...);
+```
 **2. Automatic IP:** Through the ``AutoConnect`` method, the ``OWO`` class will begin to search for the OWO App through the local network and it will establish a connection. This may not work if there is an App like OpenVPN opened or if the network does not allow this type of connection (broadcast).
 ```
 OWO.AutoConnect();
+```
+**3. IP Scanning:** By calling the ``StartScan`` method, the API will start searching for nearby owo apps and store the results in the ``DiscoveredApps`` property of the ``OWO`` class.
+```
+OWO.StartScan();
+
+//... wait some time
+
+OWO.Connect(OWO.DiscoveredApps);
 ```
 
 # Add sensations to your project
@@ -70,6 +82,29 @@ var sequence = daggerEntry.Append(bleeding);
 5. Parse a sensation from a raw string:
 ```
 var ball = (Sensation)"100,1,100,0,0,0,Ball";
+```
+# Game configuration
+## Baked sensations
+Baked sensations are those with an unique identifier, can be created from the sensations creator or by code. The sensations exported from the sensations creator are also baked sensations.
+```
+ball.Bake(id, "Ball"); //This results in a baked sensation with the name Ball.
+```
+Once a sensation is baked, it cannot be modified. 
+
+**Important:** To be able to use a baked sensation, first it is necessary to include it in the GameAuth of your game (explained below).
+
+## Game Auth
+The game auth contains the information of the baked sensations included in the game. These sensations will be shown to the user in the OWO application and will allow them to modify their intensity.
+```
+var auth = GameAuth.Create(bakedBall, bakedKnife...);
+```
+To add a sensation to the game auth, first it is necessary to bake it:
+```
+var bakedBall = BakedSensation.Parse("0~Ball~59,1,90,0,0,0,|0%100~impact-0"); //Sensation exported from the Sensations Creator
+```
+Once the game auth is ready, call the ```Configure``` method of the ```OWO```.
+```
+OWO.Configure(auth);
 ```
 
 # Develop new sensations
