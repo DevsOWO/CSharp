@@ -115,12 +115,12 @@ OWO.Configure(auth);
 You can use the sensations designed by the OWO team or create your own sensations by modifying five parameters.
 
 ### Sensations Creator
-Newest version: [Sensations Creator](https://drive.google.com/drive/folders/1dn2ZuG3ZY9Vl2gHHQyiOQZO3saRcux9k?usp=sharing).
+Newest version: [Sensations Creator](https://drive.google.com/drive/folders/1WKmUldITq8SoVLy4JoaONzisOJ7ZNQoN?usp=sharing).
 
 The sensations creator is a tool with which you can experiment and create your own sensations.
 
 ### OWO Visualizer
-Newest version: [OWO Visualizer](https://drive.google.com/drive/folders/1hTsusIT3jVPqzCBHcwuw6HUxrHbDdwXG?usp=sharing).
+Newest version: [OWO Visualizer](https://drive.google.com/drive/folders/1nVx_legdH_PBztHZahwpOOXuMQF4n5s1?usp=sharing).
 
 With the OWO visualizer you can see, in real time, what the user will be feeling while playing your game without using the OWO Skin.
 
